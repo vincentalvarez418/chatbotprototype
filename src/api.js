@@ -19,7 +19,7 @@ export async function sendMessageToCerebras(messages) {
   if (formattedMessages.length === 0) return "Error: No valid messages to send";
 
   try {
-    const res = await fetch("http://localhost:4000/chat", {
+    const res = await fetch("https://chatbotprototype-5ym1.onrender.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: formattedMessages }),
