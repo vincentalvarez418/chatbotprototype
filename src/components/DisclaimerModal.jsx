@@ -18,26 +18,33 @@ export default function DisclaimerModal({ onAgree }) {
       zIndex: 1000,
     }}>
       <div style={{
-        backgroundColor: "white",
+        backgroundColor: "#444654",
         padding: "2rem",
-        borderRadius: "10px",
+        borderRadius: "12px",
         maxWidth: "400px",
         textAlign: "center",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
+        boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
+        color: "#E5E5E5",
+        fontFamily: "Roboto, Arial, sans-serif"
       }}>
-        <h2>Disclaimer</h2>
-        <p>
-          This chatbot is a work of fiction and is not affiliated with 
-          any real institution. By continuing, you acknowledge this.
+        <h2 style={{ marginBottom: "1rem", textTransform: "uppercase" }}>DISCLAIMER</h2>
+        <p style={{ lineHeight: 1.5, fontSize: "14px", textTransform: "uppercase" }}>
+          THIS CHATBOT IS A WORK OF FICTION AND IS NOT AFFILIATED WITH 
+          ANY REAL INSTITUTION. BY CONTINUING, YOU ACKNOWLEDGE THIS.
         </p>
         <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "space-between" }}>
           <button 
             style={{
               padding: "0.5rem 1rem",
-              borderRadius: "5px",
-              border: "none",
-              backgroundColor: "#ccc",
-              cursor: "pointer"
+              borderRadius: "20px",
+              border: "1px solid #555",
+              backgroundColor: "#343541",
+              color: "#E5E5E5",
+              cursor: "pointer",
+              flex: 1,
+              marginRight: "0.5rem",
+              textTransform: "uppercase",
+              fontWeight: "600"
             }}
             onClick={handleDisagree}
           >
@@ -46,11 +53,15 @@ export default function DisclaimerModal({ onAgree }) {
           <button 
             style={{
               padding: "0.5rem 1rem",
-              borderRadius: "5px",
+              borderRadius: "20px",
               border: "none",
-              backgroundColor: "#006214",
-              color: "white",
-              cursor: "pointer"
+              backgroundColor: "#ffffff",
+              color: "black",
+              cursor: "pointer",
+              flex: 1,
+              marginLeft: "0.5rem",
+              textTransform: "uppercase",
+              fontWeight: "600"
             }}
             onClick={onAgree}
           >

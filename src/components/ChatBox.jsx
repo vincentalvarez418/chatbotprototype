@@ -48,48 +48,64 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="chat-container">
-      <SessionRefresher onReset={resetSession} />
-      <div className="chat-messages">
-        {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={`chat-message ${msg.sender === "user" ? "user" : "bot"}`}
-            style={{ marginBottom: "12px" }}
+    <div className="chat-page">
+      <div className="chat-container">
+        <div className="chat-header">
+          <div className="window-dot"></div>
+          <div className="window-dot"></div>
+          <div className="window-dot"></div>
+        </div>
+        <SessionRefresher onReset={resetSession} />
+
+        <div className="chat-messages">
+  {messages.length === 0 && (
+    <div className="chat-empty">
+      <div className="chat-empty-line animate-pop">MEET LEON</div>
+      <div className="chat-empty-line-sub animate-pop delay-1">YOUR PERSONAL WILDCAT ASSISTANT</div>
+
+    </div>
+
+  )}
+
+  {messages.map((msg, idx) => (
+    <div
+      key={idx}
+      className={`chat-message ${msg.sender === "user" ? "user" : "bot"}`}
+    >
+      {msg.sender === "bot" ? (
+        <span dangerouslySetInnerHTML={{ __html: msg.content }} />
+      ) : (
+        msg.content
+      )}
+    </div>
+  ))}
+
+  {isTyping && (
+    <div className="chat-message bot typing-indicator">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  )}
+  <div ref={messagesEndRef} />
+</div>
+
+
+        <div className="chat-input-container">
+          <input
+            className={`chat-input ${isTyping ? "disabled" : ""}`}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={handleKeyPress}
+            placeholder="Ask something..."
+            disabled={isTyping}
+          />
+          <button
+            className={`chat-button ${isTyping ? "disabled" : ""}`}
+            onClick={handleSend}
+            disabled={isTyping}
           >
-            {msg.sender === "bot" ? (
-              <span dangerouslySetInnerHTML={{ __html: msg.content }} />
-            ) : (
-              msg.content
-            )}
-          </div>
-        ))}
-        {isTyping && (
-          <div className="chat-message bot typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        )}
-        <div ref={messagesEndRef} />
-      </div>
-      <div className="chat-input-container">
-        <input
-          className={`chat-input ${isTyping ? "disabled" : ""}`}
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={handleKeyPress}
-          placeholder="Ask Something..."
-          disabled={isTyping}
-        />
-        <button
-          className={`chat-button ${isTyping ? "disabled" : ""}`}
-          onClick={handleSend}
-          disabled={isTyping}
-        >
-          SEND
-        </button>
+            SEND
+          </button>
+        </div>
       </div>
     </div>
   );
