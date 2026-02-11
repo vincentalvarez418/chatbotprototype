@@ -42,14 +42,6 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-@media (max-width: 768px) {
-  .chat-container {
-    max-width: 400px;
-    height: 90vh;
-    margin-top: 20px;
-  }
-}
-
 
 .chat-messages {
   flex: 1;
@@ -218,3 +210,8 @@
 }
 
 
+@media (max-width: 768px) {
+  .chat-container {
+    margin-top: 80px; 
+  }
+}
